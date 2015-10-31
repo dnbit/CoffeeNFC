@@ -4,12 +4,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseAnonymousUtils;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -18,9 +22,25 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        String idUser = "idUser";
+        String userId = "yuuu";
         loginParse();
-        registerPoint(idUser);
+        //registerPoint(userId);
+        countPoint(userId);
+    }
+
+    private void countPoint(String userId) {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Points");
+        query.whereEqualTo("userId", userId);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> countPoints, ParseException e) {
+                if (e == null) {
+                    Log.d("score", "Your number of point is: " + countPoints.size());
+
+                } else {
+                    Log.d("score", "Error: " + e.getMessage());
+                }
+            }
+        });
     }
 
     private void loginParse() {
