@@ -9,10 +9,6 @@ import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-
-import java.io.UnsupportedEncodingException;
 
 import com.parse.LogInCallback;
 import com.parse.ParseAnonymousUtils;
@@ -20,6 +16,8 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import java.io.UnsupportedEncodingException;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -44,7 +42,6 @@ public class MainActivity extends AppCompatActivity
         handleIntent(getIntent());
         String idUser = "idUser";
         loginParse();
-        registerPoint(idUser);
     }
 
     private void loginParse() {
@@ -79,12 +76,16 @@ public class MainActivity extends AppCompatActivity
     private void registerPoint(String idUser) {
         ParseObject points = new ParseObject("Points");
         points.put("userId", idUser);
-        points.saveInBackground(new SaveCallback() {
-            public void done(ParseException e) {
-                if (e == null) {
+        points.saveInBackground(new SaveCallback()
+        {
+            public void done(ParseException e)
+            {
+                if (e == null)
+                {
                     // Saved successfully.
                     Log.d(TAG, "Message saved!");
-                } else {
+                } else
+                {
                     // The save failed.
                     Log.d(TAG, "Message error: " + e);
                 }
@@ -129,10 +130,11 @@ public class MainActivity extends AppCompatActivity
                             String textEncoding = ((payload[0] & 0200) == 0) ? "UTF-8" : "UTF-16";
                             int languageCodeLength = payload[0] & 0077;
                             String languageCode = new String(payload, 1, languageCodeLength, "US-ASCII");
-                            String text =
+                            String idUser =
                                     new String(payload, languageCodeLength + 1,
                                             payload.length - languageCodeLength - 1, textEncoding);
-                            Log.i("****TAG", "RECORD " + text);
+                            registerPoint(idUser);
+                            Log.i("****TAG", "RECORD " + idUser);
                         } catch (UnsupportedEncodingException e)
                         {
                             // should never happen unless we get a malformed tag.
