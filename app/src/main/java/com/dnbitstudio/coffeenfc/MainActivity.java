@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        Log.i("****TAG", "onCreate MainActivity");
         if (mNfcAdapter == null) {
             // Stop here, we definitely need NFC
             Toast.makeText(this, "This device doesn't support NFC.", Toast.LENGTH_LONG).show();
