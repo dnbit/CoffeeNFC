@@ -44,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
         btnRedeem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Redeem pressed", Toast.LENGTH_SHORT).show();
+                ParseHelper.erasePoint(lastParsedNfcTag);
+                Toast.makeText(MainActivity.this, "Redeem pressed - removing " + lastParsedNfcTag, Toast.LENGTH_SHORT).show();
             }
         });
 

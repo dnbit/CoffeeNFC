@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.parse.CountCallback;
+import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseAnonymousUtils;
 import com.parse.ParseException;
@@ -11,6 +12,8 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import java.util.List;
 
 /**
  * Created by jose on 31/10/15.
@@ -58,6 +61,22 @@ public class ParseHelper {
                 } else {
                     // The save failed.
                     Log.d(TAG, "Message error: " + e);
+                }
+            }
+        });
+    }
+
+    public static void erasePoint(final String idUser) {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Points");
+        query.whereEqualTo("userId", idUser);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> countPoints, ParseException e) {
+                if (e == null) {
+                    for (ParseObject p : countPoints)
+                        p.deleteInBackground();
+
+                } else {
+                    Log.d("score", "Error: " + e.getMessage());
                 }
             }
         });
