@@ -8,30 +8,35 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingBottom="4dp"
+        android:layout_margin="8dp"
         android:gravity="center"
-        android:text="Last scanned customer"
-        android:textSize="18sp"/>
-
+        tools:text="Last scanned customer"
+        android:textSize="22sp"/>
 
     <TextView
         android:id="@+id/tv_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
         android:gravity="center"
-        android:textSize="18sp"
-        tools:text="Score"/>
+        android:textSize="22sp"
+        tools:text="Current Stamps"/>
 
-    <TextView
+    <Button
         android:id="@+id/btn_redeem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffaa8888"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="#ff00ff00"
         android:gravity="center"
-        android:padding="48dp"
-        android:textColor="#ffff0000"
-        android:textSize="18sp"
+        android:layout_gravity="center_horizontal"
+        android:padding="4dp"
+        android:layout_margin="8dp"
+        android:textColor="#ffffffff"
+        android:textSize="22sp"
         android:visibility="gone"
-        tools:text="Redeem free coffee"
+        android:text="Redeem free drink"
         tools:visibility="visible"/>
-
 </LinearLayout>
