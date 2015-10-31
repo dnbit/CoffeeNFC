@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Last scanned customer"
+        android:textSize="18sp"/>
+
+
+    <TextView
+        android:id="@+id/tv_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="18sp"
+        tools:text="Score"/>
+
+    <TextView
+        android:id="@+id/btn_redeem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffaa8888"
+        android:gravity="center"
+        android:padding="48dp"
+        android:textColor="#ffff0000"
+        android:textSize="18sp"
+        android:visibility="gone"
+        tools:text="Redeem free coffee"
+        tools:visibility="visible"/>
+
+</LinearLayout>
