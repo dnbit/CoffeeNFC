@@ -6,17 +6,18 @@
               android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_customer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
         android:paddingBottom="4dp"
         android:layout_margin="8dp"
         android:gravity="center"
-        tools:text="Last scanned customer"
+        tools:text="@string/customer_name"
         android:textSize="22sp"/>
 
     <TextView
-        android:id="@+id/tv_main"
+        android:id="@+id/tv_stamps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="4dp"

@@ -17,8 +17,10 @@ public class MainActivity extends AppCompatActivity {
     private String lastParsedNfcTag;
 
     private static final String TAG = MainActivity.class.getName();
+    public static final int REDEEM_TRESHOLD = 10;
 
-    @Bind(R.id.tv_main) TextView mainText;
+    @Bind(R.id.tv_customer) TextView cutomerText;
+    @Bind(R.id.tv_stamps) TextView stampText;
     @Bind(R.id.btn_redeem) TextView btnRedeem;
 
     @Override
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private void handleNfcIntent(Intent intent) {
         lastParsedNfcTag = NfcMessageParser.parseNfcIntent(intent);
         if (lastParsedNfcTag != null) {
-            mainText.setText(lastParsedNfcTag);
+            cutomerText.setText(getString(R.string.customer_name, lastParsedNfcTag));
             ParseHelper.registerPoint(lastParsedNfcTag, new ParseHelper.OnQueryComplete<String>() {
                 @Override
                 public void onSuccess(String result) {
@@ -68,7 +70,10 @@ public class MainActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(MainActivity.this, "Count: " + result, Toast.LENGTH_SHORT).show();
+                                    stampText.setText("Current stamp count is: " + result);
+                                    if (result >= REDEEM_TRESHOLD) {
+                                        btnRedeem.setVisibility(View.VISIBLE);
+                                    }
                                 }
                             });
                         }

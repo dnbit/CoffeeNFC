@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CoffeeNFC</string>
+    <string name="customer_name">Last scanned customer: %s</string>
 </resources>
