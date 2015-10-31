@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
     private NfcAdapter mNfcAdapter;
@@ -40,15 +41,6 @@ public class MainActivity extends AppCompatActivity {
         ParseHelper.loginParse();
         final Intent intent = getIntent();
         handleNfcIntent(intent);
-
-        btnRedeem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ParseHelper.erasePoint(lastParsedNfcTag);
-                Toast.makeText(MainActivity.this, "Redeem pressed - removing " + lastParsedNfcTag, Toast.LENGTH_SHORT).show();
-            }
-        });
-
     }
 
     @Override
@@ -84,4 +76,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @OnClick(R.id.btn_redeem)
+    public void redeemDrink()
+    {
+        ParseHelper.erasePoint(lastParsedNfcTag);
+        Toast.makeText(MainActivity.this, "Redeem pressed - removing " + lastParsedNfcTag, Toast.LENGTH_SHORT).show();
+    }
 }
