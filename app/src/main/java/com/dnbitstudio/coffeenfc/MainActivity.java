@@ -60,15 +60,10 @@ public class MainActivity extends AppCompatActivity {
                     ParseHelper.countPoint(result, new ParseHelper.OnQueryComplete<Integer>() {
                         @Override
                         public void onSuccess(final Integer result) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    stampText.setText("Current stamp count is: " + result);
-                                    if (result >= REDEEM_TRESHOLD) {
-                                        btnRedeem.setVisibility(View.VISIBLE);
-                                    }
-                                }
-                            });
+                            stampText.setText("Current stamp count is: " + result);
+                            if (result >= REDEEM_TRESHOLD) {
+                                btnRedeem.setVisibility(View.VISIBLE);
+                            }
                         }
                     });
                 }
