@@ -19,9 +19,10 @@ import java.util.List;
  * Created by jose on 31/10/15.
  */
 public class ParseHelper {
-    private static final String TAG = MainActivity.class.getName();
+    private final String TAG = MainActivity.class.getName();
 
-    public static void loginParse() {
+    public void loginParse()
+    {
         ParseAnonymousUtils.logIn(new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
@@ -34,7 +35,8 @@ public class ParseHelper {
         });
     }
 
-    public static void countPoint(final String userId, @NonNull final OnQueryComplete<Integer> callback) {
+    public void countPoint(final String userId, @NonNull final OnQueryComplete<Integer> callback)
+    {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Points");
         query.whereEqualTo("userId", userId);
         query.countInBackground(new CountCallback() {
@@ -49,7 +51,8 @@ public class ParseHelper {
         });
     }
 
-    public static void registerPoint(final String idUser, @NonNull final OnQueryComplete<String> callback) {
+    public void registerPoint(final String idUser, @NonNull final OnQueryComplete<String> callback)
+    {
         ParseObject points = new ParseObject("Points");
         points.put("userId", idUser);
         points.saveInBackground(new SaveCallback() {
@@ -66,7 +69,8 @@ public class ParseHelper {
         });
     }
 
-    public static void erasePoint(final String idUser) {
+    public void erasePoint(final String idUser)
+    {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Points");
         query.whereEqualTo("userId", idUser);
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -86,6 +90,4 @@ public class ParseHelper {
         void onSuccess(T result);
         // void onError(); // not yet :p
     }
-
-
 }

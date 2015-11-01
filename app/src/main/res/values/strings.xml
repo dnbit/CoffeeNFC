@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">CoffeeNFC</string>
-    <string name="customer_name">Hi \n %s</string>
+    <string name="customer_name">Hi %s</string>
 </resources>
