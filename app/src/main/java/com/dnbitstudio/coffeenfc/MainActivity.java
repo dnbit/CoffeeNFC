@@ -20,9 +20,12 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getName();
     public static final int REDEEM_TRESHOLD = 10;
 
-    @Bind(R.id.tv_customer) TextView cutomerText;
-    @Bind(R.id.tv_stamps) TextView stampText;
-    @Bind(R.id.btn_redeem) TextView btnRedeem;
+    @Bind(R.id.tv_customer)
+    TextView mCustomerText;
+    @Bind(R.id.tv_stamps)
+    TextView mStampText;
+    @Bind(R.id.btn_redeem)
+    TextView mBtnRedeem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
             // Stop here, we definitely need NFC
             Toast.makeText(this, "This device doesn't support NFC.", Toast.LENGTH_LONG).show();
             finish();
+            return;
+        }
+
+        if (!Utils.isNetworkConnected(this))
+        {
+            mCustomerText.setText("Network unavailable");
             return;
         }
 
@@ -53,16 +62,16 @@ public class MainActivity extends AppCompatActivity {
     private void handleNfcIntent(Intent intent) {
         lastParsedNfcTag = NfcMessageParser.parseNfcIntent(intent);
         if (lastParsedNfcTag != null) {
-            cutomerText.setText(getString(R.string.customer_name, lastParsedNfcTag));
+            mCustomerText.setText(getString(R.string.customer_name, lastParsedNfcTag));
             ParseHelper.registerPoint(lastParsedNfcTag, new ParseHelper.OnQueryComplete<String>() {
                 @Override
                 public void onSuccess(String result) {
                     ParseHelper.countPoint(result, new ParseHelper.OnQueryComplete<Integer>() {
                         @Override
                         public void onSuccess(final Integer result) {
-                            stampText.setText("Current stamp count is: " + result);
+                            mStampText.setText("Current stamp count is: " + result);
                             if (result >= REDEEM_TRESHOLD) {
-                                btnRedeem.setVisibility(View.VISIBLE);
+                                mBtnRedeem.setVisibility(View.VISIBLE);
                             }
                         }
                     });
