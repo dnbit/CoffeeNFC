@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     ParseHelper.countPoint(result, new ParseHelper.OnQueryComplete<Integer>() {
                         @Override
                         public void onSuccess(final Integer result) {
-                            mStampText.setText("Current stamp count is: " + result);
+                            mStampText.setText(result);
                             if (result >= REDEEM_TRESHOLD) {
                                 mBtnRedeem.setVisibility(View.VISIBLE);
                             }

@@ -3,7 +3,8 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical">
+              android:orientation="vertical"
+    android:weightSum="1">
 
     <TextView
         android:id="@+id/tv_customer"
@@ -14,27 +15,34 @@
         android:layout_margin="8dp"
         android:gravity="center"
         tools:text="@string/customer_name"
-        android:textSize="22sp"/>
+        android:textSize="40sp"/>
 
-    <TextView
-        android:id="@+id/tv_stamps"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="22sp"
-        tools:text="Current Stamps"/>
+        android:src="@drawable/coffee"
+        />
+        <TextView
+            android:id="@+id/tv_stamps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:gravity="center"
+            android:textSize="50sp"
+            tools:text="3"/>
+
+
 
     <Button
         android:id="@+id/btn_redeem"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:background="#ff00ff00"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"
         android:padding="4dp"
-        android:layout_margin="8dp"
+        android:layout_margin="50dp"
         android:textColor="#ffffffff"
         android:textSize="22sp"
         android:visibility="gone"
