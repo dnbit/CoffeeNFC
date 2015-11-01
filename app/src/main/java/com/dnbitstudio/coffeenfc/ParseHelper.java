@@ -3,7 +3,6 @@ package com.dnbitstudio.coffeenfc;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.parse.CountCallback;
 import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseAnonymousUtils;
@@ -35,21 +34,27 @@ public class ParseHelper {
         });
     }
 
-    public void countPoint(final String userId, @NonNull final OnQueryComplete<Integer> callback)
-    {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Points");
-        query.whereEqualTo("userId", userId);
-        query.countInBackground(new CountCallback() {
-            @Override
-            public void done(int count, ParseException e) {
-                if (e == null) {
-                    callback.onSuccess(count);
-                } else {
-                    Log.d(TAG, "Message error: " + e);
-                }
-            }
-        });
-    }
+//    public void countPoint(String userId, TextView mStampText) {
+//        ParseQuery<ParseObject> query = ParseQuery.getQuery("Points");
+//        query.whereEqualTo("userId", userId);
+//        query.findInBackground(new FindCallback<ParseObject>()
+//        {
+//            public void done(List<ParseObject> countPoints, ParseException e)
+//            {
+//                if (e == null)
+//                {
+//                    Log.d("score", "Your number of point is: " + countPoints.size());
+//                    mStampText.setText("Current stamp count is: " + countPoints.size());
+//                    if (countPoints.size() >= REDEEM_THRESHOLD)
+//                    {
+//                        mBtnRedeem.setVisibility(View.VISIBLE);
+//                    }
+//                } else {
+//                    Log.d("score", "Error: " + e.getMessage());
+//                }
+//            }
+//        });
+//    }
 
     public void registerPoint(final String idUser, @NonNull final OnQueryComplete<String> callback)
     {

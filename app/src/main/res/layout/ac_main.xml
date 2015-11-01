@@ -15,7 +15,7 @@
         android:gravity="center"
         android:paddingBottom="4dp"
         android:paddingTop="16dp"
-        android:textSize="40sp"
+        android:textSize="48sp"
         android:textColor="#ffffffff"
         tools:text="@string/customer_name"/>
 
@@ -33,7 +33,7 @@
         android:gravity="center"
         android:paddingBottom="4dp"
         android:paddingTop="4dp"
-        android:textSize="64sp"
+        android:textSize="72sp"
         android:textColor="#ffffffff"
         tools:text="3"/>
 
