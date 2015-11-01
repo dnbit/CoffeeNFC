@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private String lastParsedNfcTag;
 
     private static final String TAG = MainActivity.class.getName();
-    public static final int REDEEM_TRESHOLD = 10;
+    public static final int REDEEM_THRESHOLD = 4;
 
     @Bind(R.id.tv_customer)
     TextView mCustomerText;
@@ -70,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(final Integer result) {
                             mStampText.setText("Current stamp count is: " + result);
-                            if (result >= REDEEM_TRESHOLD) {
+                            if (result >= REDEEM_THRESHOLD)
+                            {
                                 mBtnRedeem.setVisibility(View.VISIBLE);
                             }
                         }
